@@ -1,0 +1,67 @@
+.content {
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contentSmall {
+  width: 172px;
+}
+
+.contentMedium {
+  width: 310px;
+}
+
+.description {
+  gap: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  color: #444b58;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.contentSmall .title {
+  max-width: 172px;
+}
+
+.contentMedium .title {
+  max-width: 310px;
+}
+
+.price {
+  color: #444b58;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.title:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 320px) and (max-width: 400px) {
+  .title {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+  .contentSmall .title {
+    max-width: 102px;
+  }
+}

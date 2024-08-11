@@ -1,0 +1,275 @@
+.itemMain {
+  width: 100%;
+  min-height: 100vh;
+  background-color: white;
+  gap: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 0;
+}
+
+.itemContainer {
+  width: 1180px;
+  display: flex;
+  gap: 24px;
+}
+
+.itemImage {
+  width: 520px;
+  height: 520px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.itemImgSectionItems {
+  width: 520px;
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+.itemsImage {
+  flex: 0 0 auto;
+  width: 70px;
+  height: 70px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.itemDescriptionSection {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.itemTitle {
+  color: #444b58;
+  font-size: 36px;
+  line-height: 56px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+
+.itemGrade {
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.itemGradeDescription {
+  color: #646464;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.itemStoke {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #c4c4c4;
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.itemStokeDescription {
+  color: #f14f4f;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.itemDescriptionDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.itemDescription {
+  color: #444b58;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.itemMonth {
+  color: #646464;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.itemByuSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 6px;
+  padding: 12px;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.itemPriceSection {
+  width: 140px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-right: 1px solid #d5d5d5;
+  gap: 2px;
+}
+
+.itemPrice {
+  color: #444b58;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 40px;
+}
+
+.itemDiscount {
+  color: #444b58;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.itemPersonalDiscount {
+  display: flex;
+  gap: 8px;
+}
+
+.itemPersonalYourDiscount {
+  color: #444b58;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.itemPersonalDiscountPercent {
+  color: #444b58;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@media (min-width: 1201px) and (max-width: 1440px) {
+  .itemMain {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .itemContainer {
+    width: 90%;
+    flex-direction: column;
+  }
+
+  .itemImage {
+    width: 100%;
+    height: 600px;
+  }
+
+  .itemImgSectionItems {
+    width: 100%;
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+  .itemMain {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .itemContainer {
+    width: 90%;
+    flex-direction: column;
+  }
+
+  .itemImage {
+    width: 100%;
+  }
+
+  .itemImgSectionItems {
+    width: 100%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .itemMain {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .itemContainer {
+    width: 90%;
+    flex-direction: column;
+  }
+
+  .itemImage {
+    width: 100%;
+    height: 420px;
+  }
+
+  .itemImgSectionItems {
+    width: 100%;
+  }
+}
+
+@media (min-width: 581px) and (max-width: 768px) {
+  .itemMain {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .itemContainer {
+    width: 90%;
+    flex-direction: column;
+  }
+
+  .itemImage {
+    width: 100%;
+    height: 320px;
+  }
+
+  .itemImgSectionItems {
+    width: 100%;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 580px) {
+  .itemMain {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .itemContainer {
+    width: 90%;
+    flex-direction: column;
+  }
+  .itemGrade {
+    width: 100%;
+    min-height: 34px;
+    align-items: start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .itemImage {
+    width: 100%;
+    height: 320px;
+  }
+
+  .itemImgSectionItems {
+    width: 100%;
+  }
+
+  .itemByuSection {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 0;
+  }
+
+  .itemPriceSection {
+    width: 100%;
+  }
+}

@@ -1,0 +1,39 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f14f4f;
+  border-radius: 4px;
+  padding: 20px 50px;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: white;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  z-index: 1;
+}
+
+.btn:hover {
+  background-color: #8c2828;
+  text-decoration: none;
+}
+
+.btn:disabled {
+  background-color: #f8afaf;
+}
+
+.btnSmall {
+  width: 181px;
+}
+
+.btnMedium {
+  width: 207px;
+}
+
+.btnLarge {
+  width: 220px;
+}

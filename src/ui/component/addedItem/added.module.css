@@ -1,0 +1,62 @@
+.addedContainer {
+  height: 50px;
+  gap: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.added {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f14f4f;
+  border-radius: 4px;
+  padding: 2px;
+  gap: 10px;
+  color: white;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.added:hover {
+  background-color: #8c2828;
+}
+
+.added:disabled {
+  background-color: #f8afaf;
+}
+
+.addedCount {
+  font-size: 14px;
+  line-height: 19.6px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444b58;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+@media (min-width: 320px) and (max-width: 430px) {
+  .addedContainer {
+    height: 40px;
+    gap: 20px;
+  }
+
+  .added {
+    width: 40px;
+    height: 40px;
+  }
+
+  .addedCount {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}

@@ -1,0 +1,122 @@
+.heroContainer {
+  width: 100%;
+  height: 500px;
+  background-color: #484283;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroContent {
+  width: 1180px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  border-top: 1px solid white;
+}
+
+.heroDescription {
+  color: white;
+  font-size: 36px;
+  line-height: 50px;
+  font-weight: 400;
+  z-index: 2;
+}
+
+.heroProductDescription {
+  color: white;
+  line-height: 24px;
+  font-weight: 600;
+  font-size: 16px;
+  z-index: 2;
+}
+
+.heroTitle {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  color: white;
+  font-size: 200px;
+  text-align: center;
+  opacity: 0.2;
+  font-weight: 900;
+  z-index: 0;
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+  .heroContainer {
+    width: 100%;
+    height: 500px;
+  }
+
+  .heroContent {
+    width: 90%;
+  }
+
+  .heroTitle {
+    top: 30px;
+    font-size: 180px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .heroContainer {
+    width: 100%;
+    height: 460px;
+  }
+
+  .heroContent {
+    width: 90%;
+  }
+
+  .heroTitle {
+    top: 80px;
+    width: 100%;
+    font-size: 150px;
+  }
+}
+
+@media (min-width: 581px) and (max-width: 768px) {
+  .heroContainer {
+    width: 100%;
+    height: 450px;
+    top: 82px;
+  }
+
+  .heroContent {
+    width: 90%;
+  }
+
+  .heroTitle {
+    top: 100px;
+    width: 100%;
+    font-size: 114px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 580px) {
+  .heroContainer {
+    width: 100%;
+    height: 390px;
+    top: 82.2px;
+  }
+
+  .heroContent {
+    width: 90%;
+  }
+
+  .heroTitle {
+    top: 160px;
+    width: 100%;
+    font-size: 60px;
+  }
+
+  .heroDescription {
+    font-size: 22px;
+    line-height: 30px;
+  }
+}

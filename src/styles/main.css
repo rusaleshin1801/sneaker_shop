@@ -1,0 +1,27 @@
+#root {
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("../assets/fonts/Jost-Regular.woff2") format("woff2"),
+    url("../assets/fonts/Jost-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+00-FF, U+980-9FF;
+  font-feature-settings: "smps" on;
+  font-display: swap;
+}
+
+body {
+  font-family: "Jost", sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

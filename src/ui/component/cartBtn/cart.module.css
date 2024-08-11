@@ -1,0 +1,24 @@
+.link {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f14f4f;
+  border-radius: 4px;
+  padding: 2px;
+  gap: 10px;
+  color: white;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+  z-index: 0;
+}
+
+.link:hover {
+  background-color: #8c2828;
+}
+
+.link:disabled {
+  background-color: #f8afaf;
+}

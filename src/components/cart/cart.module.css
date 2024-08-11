@@ -1,0 +1,285 @@
+.cartMain {
+  width: 100%;
+  min-height: 100vh;
+  background-color: white;
+  gap: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 48px;
+}
+
+.cartContainer {
+  width: 1180px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.cartTitle {
+  color: #444b58;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 56px;
+}
+
+.cartSection {
+  display: flex;
+  gap: 48px;
+}
+
+.cartFormContainer {
+  width: 776px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  gap: 10px;
+  padding: 20px 40px;
+}
+
+.cartForm {
+  width: 696px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px;
+}
+
+.cartFormBtn {
+  width: 286px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.cartFormBtnCart {
+  width: 62px;
+  padding-right: 12px;
+  gap: 48px;
+}
+
+.cartForm:hover {
+  background-color: #f6f6f6;
+}
+
+.cartForm:hover .cartBtnDelete {
+  background-color: #f6f6f6;
+}
+
+.cartFormImg {
+  width: 362px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.itemImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.cartBtnDelete {
+  border: none;
+  background-color: white;
+  color: #b2b5bb;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.cartBtnDelete:hover {
+  color: #444b58;
+}
+.cartTotal {
+  width: 356px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cartCommon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cartCommonTotalPrice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #e5e5e5;
+  padding-top: 10px;
+}
+
+.cartCommonLabel {
+  color: #b2b5bb;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.cartCommonItems {
+  color: #444b58;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.cartTotalCount {
+  color: #b2b5bb;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.cartCountItems {
+  color: #444b58;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.cartTotalLabel {
+  color: #b2b5bb;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.cartTotalPrice {
+  color: #444b58;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+@media (min-width: 733px) and (max-width: 1200px) {
+  .cartMain {
+    width: 100%;
+  }
+
+  .cartContainer {
+    width: 90%;
+  }
+
+  .cartSection {
+    flex-direction: column;
+  }
+
+  .cartFormContainer {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .cartForm {
+    width: 100%;
+    padding: 0;
+    padding-right: 10px;
+  }
+
+  .cartFormBtn {
+    width: 286px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .cartFormImg {
+    width: 60%;
+  }
+
+  .cartTotal {
+    width: 98%;
+  }
+}
+
+@media (min-width: 623px) and (max-width: 732px) {
+  .cartMain {
+    width: 100%;
+  }
+
+  .cartContainer {
+    width: 90%;
+  }
+
+  .cartSection {
+    flex-direction: column;
+  }
+
+  .cartFormContainer {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    border: none;
+  }
+
+  .cartForm {
+    width: 100%;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid #c4c4c4;
+    border-radius: 4px;
+  }
+
+  .cartFormImg {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .cartTotal {
+    width: 98%;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 622px) {
+  .cartMain {
+    width: 100%;
+  }
+
+  .cartContainer {
+    width: 90%;
+  }
+
+  .cartSection {
+    flex-direction: column;
+  }
+
+  .cartFormContainer {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    border: none;
+  }
+
+  .cartForm {
+    width: 100%;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid #c4c4c4;
+    border-radius: 4px;
+  }
+
+  .cartFormImg {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .itemImage {
+    width: 70px;
+    height: 50px;
+  }
+
+  .cartTotal {
+    width: 98%;
+  }
+}
