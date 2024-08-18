@@ -3,22 +3,12 @@ import { useSelector } from "react-redux";
 import Button from "../../ui/component/button/Button";
 import AddedControl from "../../ui/component/add-control/AddControl";
 import StarsRating from "../../ui/component/rating/StarsRating";
-import { CartProduct } from "../../types/types";
+import { CartProduct, Product } from "../../types/types";
 import styles from "./item.module.css";
 import { RootState } from "../../store/store";
 
 interface ItemProps {
-  product: {
-    id: number;
-    title: string;
-    price: number;
-    discountPercentage: number;
-    rating: number;
-    tags: string[];
-    stock: number;
-    description: string;
-    images: string[];
-  };
+  product: Product;
 }
 
 const Item: React.FC<ItemProps> = ({ product }) => {
