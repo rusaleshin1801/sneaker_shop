@@ -4,6 +4,7 @@
 nvm use
 npm install
 npm run dev
+npm run storybook
 
 
 Open http://localhost:5173 with your browser to see the result.
