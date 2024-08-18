@@ -1,18 +1,28 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
 import Button from "../../ui/component/button/Button";
 import AddedControl from "../../ui/component/add-control/AddControl";
 import StarsRating from "../../ui/component/rating/StarsRating";
-import { Product, CartProduct } from "../../types/types";
+import { CartProduct } from "../../types/types";
 import styles from "./item.module.css";
+import { RootState } from "../../store/store";
 
 interface ItemProps {
-  product: Product;
+  product: {
+    id: number;
+    title: string;
+    price: number;
+    discountPercentage: number;
+    rating: number;
+    tags: string[];
+    stock: number;
+    description: string;
+    images: string[];
+  };
 }
 
 const Item: React.FC<ItemProps> = ({ product }) => {
-  const [activeImage, setActiveImage] = useState<string>(product.images[0]);
+  const [activeImage, setActiveImage] = useState<string | null>(null);
   const cart = useSelector((state: RootState) => state.cart);
 
   const isProductInCart = cart?.cart?.products.some(
@@ -38,7 +48,7 @@ const Item: React.FC<ItemProps> = ({ product }) => {
           aria-labelledby="product-images"
         >
           <img
-            src={activeImage}
+            src={activeImage || product.images[0]}
             alt="Main product image"
             className={styles.itemImage}
             aria-describedby="main-image-description"
@@ -53,9 +63,7 @@ const Item: React.FC<ItemProps> = ({ product }) => {
                   key={index}
                   src={image}
                   alt={`Product image ${index + 1} of ${product.title}`}
-                  className={`${styles.itemsImage} ${
-                    activeImage === image ? styles.itemImgSectionActive : ""
-                  }`}
+                  className={`${styles.itemsImage} ${activeImage === image ? styles.itemImgSectionActive : ""}`}
                   aria-label={`Image ${index + 1} of ${product.title}`}
                   onClick={() => setActiveImage(image)}
                 />
@@ -85,12 +93,6 @@ const Item: React.FC<ItemProps> = ({ product }) => {
           <section className={styles.itemDescriptionDiv}>
             <span className={styles.itemDescription}>
               {product.description}
-            </span>
-            <span className={styles.itemMonth}>
-              {product.warrantyInformation}
-            </span>
-            <span className={styles.itemMonth}>
-              {product.shippingInformation}
             </span>
           </section>
           <section className={styles.itemByuSection}>

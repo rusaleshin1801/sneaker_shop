@@ -20,20 +20,14 @@ const ProductPage: React.FC = () => {
         <p className="loading">Loading...</p>
       </article>
     );
-  if (error)
-    return (
-      <article className="error-container">
-        <p className="error">An error occurred</p>
-      </article>
-    );
-  if (!product) return <NotFound />;
+  if (error || !product) return <NotFound />;
 
   return (
-    <React.Fragment>
+    <>
       <Header />
       <Item product={product} />
       <Footer />
-    </React.Fragment>
+    </>
   );
 };
 
