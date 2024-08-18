@@ -1,4 +1,4 @@
-.cardContainer {
+.container {
   position: relative;
   display: inline-block;
   overflow: hidden;
@@ -7,14 +7,14 @@
   margin-top: -1px;
 }
 
-.cardImage {
+.image {
   width: 370px;
   height: 300px;
   object-fit: cover;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.cardContainer:hover .cardImage {
+.container:hover .image {
   opacity: 0.35;
 }
 
@@ -32,7 +32,7 @@
   transition: opacity 0.3s ease;
 }
 
-.cardContainer:hover .overlay {
+.container:hover .overlay {
   opacity: 1;
 }
 
@@ -51,30 +51,30 @@
 }
 
 @media (max-width: 1200px) {
-  .cardContainer {
+  .container {
     width: 100%;
   }
-  .cardImage {
+  .image {
     width: 100%;
     height: 600px;
   }
 }
 
 @media (max-width: 992px) {
-  .cardContainer {
+  .container {
     width: 100%;
   }
-  .cardImage {
+  .image {
     width: 100%;
     height: 500px;
   }
 }
 
 @media (max-width: 768px) {
-  .cardContainer {
+  .container {
     width: 100%;
   }
-  .cardImage {
+  .image {
     width: 100%;
     height: 320px;
   }

@@ -24,6 +24,7 @@
 
 .btn:disabled {
   background-color: #f8afaf;
+  cursor: default;
 }
 
 .btnSmall {

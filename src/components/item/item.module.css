@@ -1,4 +1,4 @@
-.itemMain {
+.main {
   width: 100%;
   min-height: 100vh;
   background-color: white;
@@ -9,7 +9,7 @@
   padding: 48px 0;
 }
 
-.itemContainer {
+.container {
   width: 1180px;
   display: flex;
   gap: 24px;
@@ -28,6 +28,12 @@
   gap: 20px;
   overflow: hidden;
   overflow-x: auto;
+  cursor: pointer;
+}
+
+.itemImgSectionActive {
+  border: 3px solid #c4c4c4;
+  border-radius: 4px;
 }
 
 .itemsImage {
@@ -58,6 +64,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.itemRating {
+  display: flex;
+  gap: 6px;
 }
 
 .itemGradeDescription {
@@ -112,12 +123,12 @@
 }
 
 .itemPriceSection {
-  width: 140px;
   display: flex;
   align-items: center;
   flex-direction: column;
   border-right: 1px solid #d5d5d5;
   gap: 2px;
+  padding: 0 20px;
 }
 
 .itemPrice {
@@ -132,6 +143,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
+  text-decoration: line-through;
 }
 
 .itemPersonalDiscount {
@@ -154,12 +166,12 @@
 }
 
 @media (min-width: 1201px) and (max-width: 1440px) {
-  .itemMain {
+  .main {
     width: 100%;
     flex-direction: column;
   }
 
-  .itemContainer {
+  .container {
     width: 90%;
     flex-direction: column;
   }
@@ -175,12 +187,12 @@
 }
 
 @media (min-width: 993px) and (max-width: 1200px) {
-  .itemMain {
+  .main {
     width: 100%;
     flex-direction: column;
   }
 
-  .itemContainer {
+  .container {
     width: 90%;
     flex-direction: column;
   }
@@ -195,12 +207,12 @@
 }
 
 @media (min-width: 769px) and (max-width: 992px) {
-  .itemMain {
+  .main {
     width: 100%;
     flex-direction: column;
   }
 
-  .itemContainer {
+  .container {
     width: 90%;
     flex-direction: column;
   }
@@ -216,12 +228,12 @@
 }
 
 @media (min-width: 581px) and (max-width: 768px) {
-  .itemMain {
+  .main {
     width: 100%;
     flex-direction: column;
   }
 
-  .itemContainer {
+  .container {
     width: 90%;
     flex-direction: column;
   }
@@ -237,12 +249,12 @@
 }
 
 @media (min-width: 320px) and (max-width: 580px) {
-  .itemMain {
+  .main {
     width: 100%;
     flex-direction: column;
   }
 
-  .itemContainer {
+  .container {
     width: 90%;
     flex-direction: column;
   }

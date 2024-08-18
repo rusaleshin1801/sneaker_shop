@@ -4,13 +4,21 @@ import styles from "../styles/notFound.module.css";
 
 const NotFound: React.FC = () => {
   return (
-    <div className={styles.notFoundContainer}>
-      <h2 className={styles.notFoundTitle}>404</h2>
-      <p className={styles.notFoundMessage}>Oops! Page not found.</p>
-      <Link to="/" className={styles.notFoundLink}>
-        Go to Homepage
-      </Link>
-    </div>
+    <main
+      className={styles.container}
+      aria-labelledby="not-found-heading"
+      role="alert"
+    >
+      <section>
+        <h1 id="not-found-heading" className={styles.title}>
+          404
+        </h1>
+        <p className={styles.message}>Oops! Page not found.</p>
+        <Link to="/" className={styles.link} aria-label="Go to the homepage">
+          Go to Homepage
+        </Link>
+      </section>
+    </main>
   );
 };
 

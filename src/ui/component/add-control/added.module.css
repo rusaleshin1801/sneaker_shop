@@ -1,4 +1,4 @@
-.addedContainer {
+.container {
   height: 50px;
   gap: 20px;
   display: flex;
@@ -29,7 +29,7 @@
   background-color: #f8afaf;
 }
 
-.addedCount {
+.count {
   font-size: 14px;
   line-height: 19.6px;
   font-weight: 400;
@@ -45,7 +45,7 @@
 }
 
 @media (min-width: 320px) and (max-width: 430px) {
-  .addedContainer {
+  .container {
     height: 40px;
     gap: 20px;
   }
@@ -55,7 +55,7 @@
     height: 40px;
   }
 
-  .addedCount {
+  .count {
     font-size: 14px;
     line-height: 16px;
   }
