@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./header.module.css";
 import Logo from "../../assets/logo/logo.svg";
-import Cart from "../../assets/svg/cart.svg";
+import Cart from "../../ui/icon/cart.svg";
 import { RootState } from "../../store/store";
 
 const Header: React.FC = () => {

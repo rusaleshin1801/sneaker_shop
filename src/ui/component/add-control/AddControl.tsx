@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./added.module.css";
-import Plus from "../../../assets/svg/plus.svg";
-import Minus from "../../../assets/svg/minus.svg";
+import Plus from "../../icon/minus.svg";
+import Minus from "../../icon/minus.svg";
 import { CartProduct } from "../../../types/types";
 
 interface AddedItemProps {

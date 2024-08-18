@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./faq.module.css";
-import Plus from "../../assets/svg/plus.svg";
+import Plus from "../../ui/icon/plus.svg";
 
 interface Question {
   question: string;

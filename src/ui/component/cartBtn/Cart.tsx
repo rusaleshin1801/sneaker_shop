@@ -1,7 +1,7 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import styles from "./cart.module.css";
-import Basket from "../../../assets/svg/basket.svg";
+import Basket from "../../icon/basket.svg";
 
 const CartLink: React.FC = () => {
   return (
