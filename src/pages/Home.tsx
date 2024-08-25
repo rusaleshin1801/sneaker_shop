@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Header from "../components/header/Header";
 import Hero from "../components/hero/Hero";
 import Catalog from "../components/catalog/Catalog";
 import Faq from "../components/faq/Faq";
-import Footer from "../components/footer/Footer";
 
 const Home: React.FC = () => {
   const { hash } = useLocation();
@@ -19,15 +17,11 @@ const Home: React.FC = () => {
   }, [hash]);
 
   return (
-    <React.Fragment>
-      <Header />
-      <main>
-        <Hero />
-        <Catalog />
-        <Faq />
-      </main>
-      <Footer />
-    </React.Fragment>
+    <>
+      <Hero />
+      <Catalog />
+      <Faq />
+    </>
   );
 };
 

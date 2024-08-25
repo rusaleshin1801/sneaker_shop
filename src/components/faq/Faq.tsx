@@ -51,7 +51,7 @@ const Faq: React.FC = () => {
               role="region"
               aria-labelledby={questionId}
             >
-              <button
+              <div
                 id={questionId}
                 aria-expanded={isOpen}
                 aria-controls={answerId}
@@ -68,7 +68,7 @@ const Faq: React.FC = () => {
                     isOpen ? styles.faqIconOpen : ""
                   }`}
                 />
-              </button>
+              </div>
               <p
                 id={answerId}
                 className={`${styles.faqHeadAnswer} ${
