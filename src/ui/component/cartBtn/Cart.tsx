@@ -1,19 +1,21 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
 import styles from "./cart.module.css";
 import Basket from "../../icon/basket.svg";
 
-const CartLink: React.FC = () => {
+interface CartBtnProps {
+  onClick: () => void;
+}
+
+const CartBtn: React.FC<CartBtnProps> = ({ onClick }) => {
   return (
-    <RouterLink
-      to="/cart"
+    <button
       className={styles.link}
-      aria-label="Go to cart"
-      role="link"
+      aria-label="button Add to cart"
+      onClick={onClick}
     >
       <img src={Basket} alt="Shopping basket icon" width={18} height={18} />
-    </RouterLink>
+    </button>
   );
 };
 
-export default CartLink;
+export default CartBtn;

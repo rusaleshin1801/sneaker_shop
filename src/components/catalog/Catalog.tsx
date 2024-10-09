@@ -1,33 +1,76 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCartByUserId } from "../../store/slices/cartSlice";
 import { useGetProductsQuery } from "../../store/slices/getProductApi";
-import { RootState, AppDispatch } from "../../store/store";
-import Card from "../../ui/component/card/Card";
-import Content from "../../ui/component/content/Content";
-import CartBtn from "../../ui/component/cartBtn/Cart";
-import AddedControl from "../../ui/component/add-control/AddControl";
-import Button from "../../ui/component/button/Button";
-import { Product, CartProduct } from "../../types/types";
+import { useAppDispatch } from "../../hook/useAppDispatch";
+import { useAppSelector } from "../../hook/useAppSelector";
 import useDebounce from "../../hook/useDebounce";
+import Card from "../../ui/component/card/Card";
+import Button from "../../ui/component/button/Button";
+import Input from "../../ui/component/input/Input";
+import { Product } from "../../types/types";
 import styles from "./catalog.module.css";
+import Loading from "../loading/Loading";
+import Error from "../error/Error";
+
+import {
+  setQuantities,
+  updateQuantity,
+  addProduct,
+} from "../../store/slices/quantitiesSlice";
+import { useUpdateCartMutation } from "../../store/slices/getProductApi";
+import { useGetCurrentUserQuery } from "../../store/slices/getProductApi";
+import { setCartData } from "../../store/slices/cartDataSlice";
 
 const Catalog: React.FC = () => {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
   const [showMore, setShowMore] = useState<number>(12);
   const [searchItem, setSearchItem] = useState<string>("");
+  const { cart } = useAppSelector((state) => state.cart);
   const debouncedSearchItem = useDebounce(searchItem, 500);
-
   const { data, error, isLoading } = useGetProductsQuery(debouncedSearchItem);
-  const { cart, loading: cartLoading } = useSelector(
-    (state: RootState) => state.cart
-  );
+  const quantities = useAppSelector((state) => state.quantities.quantities);
+  const [updateCart] = useUpdateCartMutation();
+  const { data: user } = useGetCurrentUserQuery();
 
   useEffect(() => {
-    if (!cart && cartLoading === "idle") {
-      dispatch(fetchCartByUserId());
+    if (cart && cart.products) {
+      const initialQuantities = cart.products.map((product) => {
+        const totalPrice = product.price * product.quantity;
+        const discountedPrice = parseFloat(
+          (
+            totalPrice -
+            totalPrice * (product.discountPercentage / 100)
+          ).toFixed(2)
+        );
+
+        return {
+          id: product.id,
+          quantity: product.quantity,
+          totalPrice: totalPrice,
+          discountedPrice: discountedPrice,
+        };
+      });
+      dispatch(setQuantities(initialQuantities));
     }
-  }, [dispatch, cart, cartLoading]);
+  }, [cart, dispatch]);
+
+  useEffect(() => {
+    if (quantities.length > 0 && user) {
+      updateCart({
+        userId: user.id,
+        products: quantities.map((q) => ({
+          id: q.id,
+          quantity: q.quantity,
+        })),
+      })
+        .unwrap()
+        .then((result) => {
+          dispatch(setCartData(result));
+        })
+        .catch((error) => {
+          console.error("Ошибка при обновлении корзины:", error);
+        });
+    }
+  }, [quantities, user, updateCart, dispatch]);
 
   const handleShowMore = (): void => {
     if (data?.products.length) {
@@ -37,35 +80,32 @@ const Catalog: React.FC = () => {
     }
   };
 
+  const handleQuantityChange = (productId: number, newQuantity: number) => {
+    dispatch(updateQuantity({ id: productId, quantity: newQuantity }));
+  };
+
+  const handleAddToCart = (productId: number) => {
+    const product = data?.products.find((p) => p.id === productId);
+    if (product) {
+      dispatch(addProduct(product));
+    }
+  };
+
   const hasMoreProducts: boolean = data
     ? showMore < data.products.length
     : false;
 
   const products = data?.products.slice(0, showMore) || [];
 
-  const cartProductIds = cart?.products.map((product) => product.id) || [];
-
-  if (isLoading)
-    return (
-      <article className="loading-container" role="status" aria-live="polite">
-        <p className="loading">Loading...</p>
-      </article>
-    );
-
-  if (error)
-    return (
-      <article className="error-container" role="alert" aria-live="assertive">
-        <p className="error">An error occurred</p>
-      </article>
-    );
+  if (isLoading) return <Loading />;
+  if (error) return <Error />;
 
   return (
     <article className={styles.catalogMain} id="catalog">
       <section className={styles.catalogContainer}>
         <h2 className={styles.catalogTitle}>Catalog</h2>
-        <input
+        <Input
           type="text"
-          className={styles.catalogSearch}
           placeholder="Search by title"
           aria-label="Search by product title"
           value={searchItem}
@@ -73,28 +113,14 @@ const Catalog: React.FC = () => {
         />
         <div className={styles.catalogCardContainer}>
           {products.map((product: Product) => {
-            const isInCart = cartProductIds.includes(product.id);
-
             return (
               <section className={styles.catalogCard} key={product.id}>
-                <Card product={product} />
-                <div className={styles.catalogContentContainer}>
-                  <Content
-                    product={product}
-                    width={isInCart ? "small" : "medium"}
-                  />
-                  {isInCart ? (
-                    <AddedControl
-                      product={
-                        (cart &&
-                          cart.products.find((p) => p.id === product.id)) ||
-                        ({} as CartProduct)
-                      }
-                    />
-                  ) : (
-                    <CartBtn />
-                  )}
-                </div>
+                <Card
+                  product={product}
+                  quantities={quantities}
+                  onQuantityChange={handleQuantityChange}
+                  onAddToCart={handleAddToCart}
+                />
               </section>
             );
           })}

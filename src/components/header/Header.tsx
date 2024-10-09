@@ -1,15 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import styles from "./header.module.css";
+import { useAppSelector } from "../../hook/useAppSelector";
 import Logo from "../../assets/logo/logo.svg";
 import Cart from "../../ui/icon/cart.svg";
-import { RootState } from "../../store/store";
+import styles from "./header.module.css";
 
 const Header: React.FC = () => {
-  const { cart } = useSelector((state: RootState) => state.cart);
-
+  const { cart } = useAppSelector((state) => state.cart);
+  const quantities = useAppSelector((state) => state.quantities.quantities);
+  const { firstName, lastName } = useAppSelector((state) => state.user);
   const totalProducts = cart?.totalProducts || 0;
+  const totalItems = quantities.filter((item) => item.quantity > 0).length;
 
   return (
     <header className={styles.headerContainer}>
@@ -45,18 +46,16 @@ const Header: React.FC = () => {
               Cart
               <img src={Cart} alt="Cart icon" width={20} height={20} />
               {totalProducts > 0 && (
-                <span className={styles.cartCount}>{totalProducts}</span>
+                <span className={styles.cartCount}>
+                  {totalItems ? totalItems : totalProducts}
+                </span>
               )}
             </Link>
           </li>
           <li>
-            <Link
-              to="/profile"
-              className={styles.headerLink}
-              aria-label="Go to Profile section"
-            >
-              Johnson Smith
-            </Link>
+            <span>
+              {firstName} {lastName}
+            </span>
           </li>
         </ul>
       </nav>

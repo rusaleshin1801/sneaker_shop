@@ -1,12 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Cart } from "../../types/types";
+import { Cart, CartResponse } from "../../types/types";
 
-export const fetchCartByUserId = createAsyncThunk<Cart>(
+export const fetchCartByUserId = createAsyncThunk<Cart, number>(
   "cart/fetchCartByUserId",
-  async () => {
-    const response = await axios.get("https://dummyjson.com/carts/user/6");
-    return response.data.carts[0] as Cart;
+  async (userId) => {
+    const response = await axios.get<CartResponse>(
+      `https://dummyjson.com/carts/user/${userId}`
+    );
+    return response.data.carts[0];
   }
 );
 

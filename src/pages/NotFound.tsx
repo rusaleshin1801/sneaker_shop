@@ -10,9 +10,9 @@ const NotFound: React.FC = () => {
       role="alert"
     >
       <section>
-        <h1 id="not-found-heading" className={styles.title}>
+        <h2 id="not-found-heading" className={styles.title}>
           404
-        </h1>
+        </h2>
         <p className={styles.message}>Oops! Page not found.</p>
         <Link to="/" className={styles.link} aria-label="Go to the homepage">
           Go to Homepage
