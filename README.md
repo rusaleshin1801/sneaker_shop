@@ -27,10 +27,10 @@ task1/
 │   │   └── main.css          # Main CSS file
 │   ├── store/                # Redux store configuration
 │   │   ├── store.ts          # Redux store configuration file
+│   │   ├── types/            # Global types
 │   │   └── slices/           # Redux slices (e.g., productSlice.ts)
 │   ├── ui/                   # UI components and icons
 │   │   └── components/       # Reusable UI components (e.g., Card, Button)
-│   ├── types/                # Global types
 │   └── hooks/                # Custom React hooks
 │   ├── App.tsx               # Main App component
 │   ├── main.tsx              # Main entry point

@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Do not ignore README.md
+!README.md
+*storybook.log

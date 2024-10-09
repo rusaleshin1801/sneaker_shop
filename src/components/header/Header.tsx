@@ -1,10 +1,16 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./header.module.css";
 import Logo from "../../assets/logo/logo.svg";
-import Cart from "../../assets/svg/cart.svg";
+import Cart from "../../ui/icon/cart.svg";
+import { RootState } from "../../store/store";
 
 const Header: React.FC = () => {
+  const { cart } = useSelector((state: RootState) => state.cart);
+
+  const totalProducts = cart?.totalProducts || 0;
+
   return (
     <header className={styles.headerContainer}>
       <nav className={styles.nav}>
@@ -25,18 +31,22 @@ const Header: React.FC = () => {
             <Link
               to="/#faq"
               className={styles.headerLink}
-              aria-label="Go to Faq section"
+              aria-label="Go to FAQ section"
             >
               FAQ
             </Link>
           </li>
-          <li>
+          <li className={styles.cartItem}>
             <Link
               to="/cart"
               className={styles.headerLink}
               aria-label="Go to Cart section"
             >
-              Cart <img src={Cart} alt="Cart icon" width={20} height={20} />
+              Cart
+              <img src={Cart} alt="Cart icon" width={20} height={20} />
+              {totalProducts > 0 && (
+                <span className={styles.cartCount}>{totalProducts}</span>
+              )}
             </Link>
           </li>
           <li>

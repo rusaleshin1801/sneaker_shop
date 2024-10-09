@@ -1,4 +1,4 @@
-.notFoundContainer {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,14 +8,14 @@
   background-color: #f4f4f4;
 }
 
-.notFoundTitle {
+.title {
   font-weight: 900;
   font-size: 126px;
   line-height: 66px;
   color: #f14f4f;
 }
 
-.notFoundMessage {
+.message {
   font-weight: 700;
   font-size: 36px;
   line-height: 56px;
@@ -23,7 +23,7 @@
   margin: 20px 0;
 }
 
-.notFoundLink {
+.link {
   background-color: #f14f4f;
   color: white;
   font-size: 16px;
@@ -36,7 +36,7 @@
   transition: background-color 0.3s, color 0.3s;
 }
 
-.notFoundLink:hover {
+.link:hover {
   background-color: #8c2828;
   color: #fff;
 }

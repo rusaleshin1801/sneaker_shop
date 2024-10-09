@@ -1,100 +1,119 @@
-import React from "react";
-import styles from "./item.module.css";
-import Grade from "../../assets/svg/grade.svg";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import Button from "../../ui/component/button/Button";
+import AddedControl from "../../ui/component/add-control/AddControl";
+import StarsRating from "../../ui/component/rating/StarsRating";
+import { CartProduct, Product } from "../../types/types";
+import styles from "./item.module.css";
+import { RootState } from "../../store/store";
 
-interface Product {
-  id: string;
-  title: string;
-  image: string;
+interface ItemProps {
+  product: Product;
 }
 
-const Item: React.FC = () => {
-  const imageUrl =
-    "https://s3-alpha-sig.figma.com/img/6a4c/cb73/3d5636cb20ebbdfd22ef229cec9df732?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=jLi~z0RHQY-PvWgk~zpgrvOHbO~kOdH1nzTQxZOi2G0vcbmPap4cDAoCnzV5jceEbH9ATzFu--sv~fer-qW2EHMyUxCQQgZs-dDmy87hO4TiN8iLaWlhhz7nVCdnyRfiWKbjm0n-Cc0XBX5RCa0Mw~NLRfLVGW95xCPPLztlZplspfdXMLmapale3CBc2xnVFKBZ6Z7AsdbXrImnxFqAj7Jcn8G9KRiJNX25W7IfqrjNK6OwZngA2Z4fXLTXQM2SUoSqdU6r~SIAetxwygdyh2w3TWvMF8XOzPLqw9Nb8hmOtQQH9davETEzEhxbZFqwNuv4nIgy~692fo1v82T8EQ__";
+const Item: React.FC<ItemProps> = ({ product }) => {
+  const [activeImage, setActiveImage] = useState<string | null>(null);
+  const cart = useSelector((state: RootState) => state.cart);
 
-  const products: Product[] = [
-    { id: "1", title: "Product 1", image: imageUrl },
-    { id: "2", title: "Product 2", image: imageUrl },
-    { id: "3", title: "Product 3", image: imageUrl },
-    { id: "4", title: "Product 4", image: imageUrl },
-    { id: "5", title: "Product 5", image: imageUrl },
-    { id: "6", title: "Product 6", image: imageUrl },
-    { id: "7", title: "Product 7", image: imageUrl },
-  ];
+  const isProductInCart = cart?.cart?.products.some(
+    (cartItem: CartProduct) => cartItem.id === product.id
+  );
+
+  const cartProduct = cart?.cart?.products.find(
+    (cartItem: CartProduct) => cartItem.id === product.id
+  );
+
+  const formatTags = (tags: string[]) => {
+    return tags.join(", ");
+  };
+
+  const discountPrice =
+    product.price - (product.price * product.discountPercentage) / 100;
 
   return (
-    <main className={styles.itemMain}>
-      <article className={styles.itemContainer}>
+    <main className={styles.main}>
+      <article className={styles.container}>
         <section
           className={styles.itemImgSection}
           aria-labelledby="product-images"
         >
           <img
-            src={imageUrl}
+            src={activeImage || product.images[0]}
             alt="Main product image"
             className={styles.itemImage}
             aria-describedby="main-image-description"
           />
-          <div
-            className={styles.itemImgSectionItems}
-            aria-label="Product gallery"
-          >
-            {products.map((product) => (
-              <img
-                key={product.id}
-                src={product.image}
-                alt={product.title}
-                className={styles.itemsImage}
-                aria-label={product.title}
-              />
-            ))}
-          </div>
+          {product.images.length > 1 && (
+            <div
+              className={styles.itemImgSectionItems}
+              aria-label="Product gallery"
+            >
+              {product.images.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  alt={`Product image ${index + 1} of ${product.title}`}
+                  className={`${styles.itemsImage} ${activeImage === image ? styles.itemImgSectionActive : ""}`}
+                  aria-label={`Image ${index + 1} of ${product.title}`}
+                  onClick={() => setActiveImage(image)}
+                />
+              ))}
+            </div>
+          )}
         </section>
+
         <section
           className={styles.itemDescriptionSection}
           aria-labelledby="item-details"
         >
-          <h1 className={styles.itemTitle}>Essence Mascara Lash Princess</h1>
-          <div className={styles.itemGrade}>
-            <img src={Grade} alt="Product rating" />
+          <h2 className={styles.itemTitle}>{product.title}</h2>
+          <section className={styles.itemGrade}>
+            <div className={styles.itemRating}>
+              <StarsRating rating={product.rating} />
+            </div>
             <span className={styles.itemGradeDescription}>
-              electronics, selfie accessories
+              {formatTags(product.tags)}
             </span>
-          </div>
-          <div className={styles.itemStoke}>
+          </section>
+          <section className={styles.itemStoke}>
             <span className={styles.itemStokeDescription}>
-              In Stock - Only 5 left!
+              In Stock - Only {product.stock} left!
             </span>
-          </div>
-          <div className={styles.itemDescriptionDiv}>
+          </section>
+          <section className={styles.itemDescriptionDiv}>
             <span className={styles.itemDescription}>
-              The Essence Mascara Lash Princess is a popular mascara known for
-              its volumizing and lengthening effects. Achieve dramatic lashes
-              with this long-lasting and cruelty-free formula.
+              {product.description}
             </span>
-            <span className={styles.itemMonth}>1 month warranty</span>
-            <span className={styles.itemMonth}>Ships in 1 month</span>
-          </div>
+          </section>
           <section className={styles.itemByuSection}>
             <div className={styles.itemPriceSection}>
               <span className={styles.itemPrice} aria-label="Price">
-                $7.17
+                ${discountPrice.toFixed(2)}
               </span>
               <span
                 className={styles.itemDiscount}
                 aria-label="Discounted Price"
               >
-                $9.99
+                ${product.price}
               </span>
             </div>
             <div className={styles.itemPersonalDiscount}>
               <span className={styles.itemPersonalYourDiscount}>
                 Your discount:
               </span>
-              <span className={styles.itemPersonalDiscountPercent}>14.5%</span>
+              <span className={styles.itemPersonalDiscountPercent}>
+                {product.discountPercentage} %
+              </span>
             </div>
-            <Button text="Add to cart" width="small" aria-label="Add to cart" />
+            {isProductInCart && cartProduct ? (
+              <AddedControl product={cartProduct} />
+            ) : (
+              <Button
+                text="Add to cart"
+                width="small"
+                aria-label="Add to cart"
+              />
+            )}
           </section>
         </section>
       </article>
